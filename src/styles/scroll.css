@@ -1,0 +1,139 @@
+.scroll-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-wrapper {
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: transparent;
+}
+
+.scroll-wrapper:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.scroll-content {
+  display: flex;
+  gap: 1rem;
+  animation: scroll 80s linear infinite;
+  padding: 1rem 0;
+}
+
+/* Add fade effect containers */
+.scroll-container::before,
+.scroll-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Light theme fade effects */
+.scroll-container::before {
+  left: 0;
+  background: linear-gradient(to right, rgb(249, 250, 251) 0%, transparent 100%);
+}
+
+.scroll-container::after {
+  right: 0;
+  background: linear-gradient(to left, rgb(249, 250, 251) 0%, transparent 100%);
+}
+
+/* Dark theme fade effects */
+:root[class~="dark"] .scroll-container::before {
+  background: linear-gradient(to right, #000 0%, transparent 100%);
+}
+
+:root[class~="dark"] .scroll-container::after {
+  background: linear-gradient(to left, #000 0%, transparent 100%);
+}
+
+/* Add media query for smaller screens */
+@media (max-width: 768px) {
+  .scroll-content {
+    animation: scroll 80s linear infinite;
+  }
+}
+
+/* Optional: Pause animation on hover */
+.scroll-wrapper:hover .scroll-content {
+  animation-play-state: paused;
+}
+
+.animate-scroll {
+  animation: scroll 80s linear infinite;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Container for clients and partners sections */
+.logo-scroll-container {
+  position: relative;
+}
+
+/* Fade effect overlays */
+.logo-scroll-container::before,
+.logo-scroll-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Left fade */
+.logo-scroll-container::before {
+  left: 0;
+  background: linear-gradient(to right, 
+    var(--fade-color) 0%, 
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Right fade */
+.logo-scroll-container::after {
+  right: 0;
+  background: linear-gradient(to left, 
+    var(--fade-color) 0%, 
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Dark theme fade colors */
+.dark-theme-fade {
+  --fade-color: rgb(0, 0, 0);
+}
+
+/* Light theme fade colors */
+.light-theme-fade {
+  --fade-color: rgb(249, 250, 251);
+} 

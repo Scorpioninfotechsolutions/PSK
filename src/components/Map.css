@@ -1,0 +1,47 @@
+/* Custom styling for Leaflet map */
+
+/* Make map container have rounded corners to match app design */
+.leaflet-container {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Style the attribution to be less obtrusive */
+.leaflet-control-attribution {
+  font-size: 9px !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border-radius: 4px !important;
+  padding: 2px 4px !important;
+}
+
+/* Custom popup styling */
+.custom-popup .leaflet-popup-content-wrapper {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.custom-popup .leaflet-popup-tip-container {
+  display: none;
+}
+
+/* Make marker pop on hover */
+.leaflet-marker-icon {
+  transition: transform 0.2s ease;
+}
+
+.leaflet-marker-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Make the map scroll smoothly */
+.leaflet-fade-anim .leaflet-tile,
+.leaflet-zoom-anim .leaflet-zoom-animated {
+  transition: transform 0.25s cubic-bezier(0, 0, 0.25, 1);
+}
+
+/* Hide default zoom controls since we're using our own */
+.leaflet-control-zoom {
+  display: none;
+} 

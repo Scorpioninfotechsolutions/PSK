@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Allow all bots to access all content
+Disallow: 
+
+# Sitemap location
+Sitemap: https://pskinfraprojects.com/sitemap.xml
+
+# Crawl-delay for heavier bots
+Crawl-delay: 10 
+
+# Block AI crawlers
+User-agent: GPTBot
+Disallow: / 
