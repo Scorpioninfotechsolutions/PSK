@@ -57,7 +57,7 @@ const images = [
   },
   {
     id: 2,
-    url: "/images/projects/1a.webp",
+    url: "/images/projects/2.webp",
     category: "Road Works",
     title: "Road Works",
   },
@@ -321,14 +321,14 @@ const Gallery = () => {
                   } shadow-lg hover:shadow-xl transition-all duration-300 group`}
                 >
                   {/* Award Image */}
-                  <div className="aspect-[4/3] relative overflow-hidden">
+                  <div className="aspect-auto min-h-[200px] relative overflow-hidden">
                     <div className={`absolute inset-0 bg-gradient-to-b ${
                       theme === 'dark' ? 'from-purple-500/30' : 'from-purple-500/10'
                     } to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                     <img
                       src={award.image}
                       alt={award.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       onError={(e) => {
                         e.currentTarget.src = "/placeholder-award.png";
                         e.currentTarget.style.opacity = "0.7";
@@ -505,14 +505,14 @@ const Gallery = () => {
                     theme === 'dark' 
                       ? 'border-white/10' 
                       : 'border-purple-500/10'
-                  }`}
+                  } h-full flex flex-col`}
                 >
-                  <div className="aspect-square relative">
+                  <div className="relative w-full pt-[100%] overflow-hidden">
                     <img
                       src={image.url}
                       alt={image.title}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500"
                       width={300}
                       height={300}
                     />
@@ -636,7 +636,10 @@ const Gallery = () => {
                 className="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain"
               />
               <button
-                onClick={() => setSelectedImage(null)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImage(null);
+                }}
                 className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white/60 hover:text-white transition-colors"
               >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -647,8 +650,8 @@ const Gallery = () => {
           </div>
         )}
 
-        <Footer />
       </main>
+      <Footer />
     </LazyMotion>
   );
 };
