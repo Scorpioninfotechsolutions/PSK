@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTheme } from '@/lib/themes';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const MoonIcon = () => (
   <svg 
@@ -64,13 +65,22 @@ const ThemeSwitcher: React.FC = () => {
     : 'text-black hover:text-blue-600';
 
   return (
-    <button
-      onClick={toggleTheme}
-      className={`p-1 rounded-full transition-colors ml-2 ${textColorClass}`}
-      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-    >
-      {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-    </button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button
+            onClick={toggleTheme}
+            className={`p-1 rounded-full transition-colors ml-2 ${textColorClass}`}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+          >
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          </button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 

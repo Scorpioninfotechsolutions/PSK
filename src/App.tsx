@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { AudioProvider } from '@/components/AudioProvider';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import LoadingSpinner from '@/components/LoadingSpinner';
 // import CustomAnimatedCursor from "./components/AnimatedCursor";
@@ -67,32 +68,34 @@ const App = () => {
   return (
     <ErrorBoundary>
       <ThemeProvider>
-        <QueryClientProvider client={queryClient}>
-          <TooltipProvider>
-            {/* <CustomAnimatedCursor /> */}
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
-              <ScrollToTop />
-              <Suspense fallback={<LoadingSpinner />}>
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/services" element={<Services />} />
-                  <Route path="/projects" element={<Projects />} />
-                  <Route path="/projects/:projectId" element={<ProjectDetail />} />
-                  <Route path="/gallery" element={<Gallery />} />
-                  <Route path="/machineries" element={<Machineries />} />
-                  <Route path="/careers" element={<Careers />} />
-                  <Route path="/careers/apply" element={<CareerForm />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Suspense>
-              <WhatsAppButton />
-            </BrowserRouter>
-          </TooltipProvider>
-        </QueryClientProvider>
+        <AudioProvider>
+          <QueryClientProvider client={queryClient}>
+            <TooltipProvider>
+              {/* <CustomAnimatedCursor /> */}
+              <Toaster />
+              <Sonner />
+              <BrowserRouter>
+                <ScrollToTop />
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/projects" element={<Projects />} />
+                    <Route path="/projects/:projectId" element={<ProjectDetail />} />
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/machineries" element={<Machineries />} />
+                    <Route path="/careers" element={<Careers />} />
+                    <Route path="/careers/apply" element={<CareerForm />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </Suspense>
+                <WhatsAppButton />
+              </BrowserRouter>
+            </TooltipProvider>
+          </QueryClientProvider>
+        </AudioProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

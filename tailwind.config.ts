@@ -10,6 +10,15 @@ export default {
 	],
 	prefix: "",
 	theme: {
+		screens: {
+			'xs': '480px',
+			'sm': '640px',
+			'md': '768px',
+			'lg': '1024px',
+			'xl': '1280px',
+			'xxl': '1300px',
+			'2xl': '1536px',
+		},
 		container: {
 			center: true,
 			padding: '2rem',
@@ -115,5 +124,8 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require("@tailwindcss/aspect-ratio")
+	],
 } satisfies Config;

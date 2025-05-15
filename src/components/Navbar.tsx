@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "@/lib/themes";
 import ThemeSwitcher from "./ThemeSwitcher";
+import MusicToggle from "./MusicToggle";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,7 +66,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden xxl:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -77,11 +78,15 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
-            <ThemeSwitcher />
+            <div className="flex items-center">
+              <MusicToggle />
+              <ThemeSwitcher />
+            </div>
           </div>
 
           {/* Mobile Menu Button and ThemeSwitcher for mobile */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="xxl:hidden flex items-center gap-2">
+            <MusicToggle />
             <ThemeSwitcher />
             <Button
               variant="ghost"
@@ -100,7 +105,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className={`md:hidden py-4 border-t ${theme === 'dark' ? 'border-white/10' : 'border-black/10'} ${mobileMenuBgClass}`}>
+          <div className={`xxl:hidden py-4 border-t ${theme === 'dark' ? 'border-white/10' : 'border-black/10'} ${mobileMenuBgClass}`}>
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <Link

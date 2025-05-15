@@ -1,0 +1,45 @@
+.embla {
+  --slide-spacing: 0;
+  --slide-height: 24rem;
+  position: relative;
+  width: 100%;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  position: relative;
+}
+
+/* Glassmorphism effect */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .embla {
+    --slide-height: 16rem;
+  }
+}
+
+/* Animation for slide transitions */
+.embla__slide {
+  transition: opacity 0.4s ease;
+} 
