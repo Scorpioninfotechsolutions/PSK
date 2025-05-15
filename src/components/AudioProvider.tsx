@@ -9,7 +9,7 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     // Create audio element
-    const audio = new Audio('/audio/The Inspiring.wav');
+    const audio = new Audio('/audio/Main.mp3');
     audio.loop = true;
     audio.volume = 0.2; // Reduced volume (20%)
     audioRef.current = audio;
